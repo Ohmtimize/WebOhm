@@ -15,6 +15,8 @@ class Installation(models.Model):
         help_text='Enter installation address'
     )
 
+    postcode = models.CharField(max_length=4, help_text='Enter postcode', default='0000')
+
     date = models.DateField(null=True, blank=True)
 
     def __str__(self):

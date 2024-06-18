@@ -21,9 +21,20 @@ def index(request):
 
 class ClientsListView(generic.ListView):
     model = Client
+    paginate_by = 2
     # filter a subset of results to show:
     context_object_name = 'client_list'
-    queryset = Client.objects.filter(memberType='ST')[:5] # Get 5 clients with standard membership
+    #queryset = Client.objects.filter(memberType='ST')[:5] # Get 5 clients with standard membership
+    queryset = Client.objects.all()
 
 class ClientDetailView(generic.DetailView):
     model = Client
+
+class InstallationListView(generic.ListView):
+    model = Installation
+    paginate_by = 5
+    context_object_name = 'installation_list'
+    queryset = Installation.objects.all()
+
+class InstallationDetailView(generic.DetailView):
+    model = Installation

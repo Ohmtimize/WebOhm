@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>List of Installations</h1>
+  {% if installation_list %}
+    <ul>
+      {% for installation in installation_list %}
+      <li>
+        <a href="{{ installation.get_absolute_url }}">{{ installation.address }}</a>
+        ({{installation.date}})
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no installations in the database.</p>
+  {% endif %}
+{% endblock %}
