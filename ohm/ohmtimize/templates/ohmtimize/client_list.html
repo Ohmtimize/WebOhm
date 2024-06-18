@@ -4,7 +4,7 @@
   <h1>Clients List</h1>
   {% if client_list %}
     <ul>
-      {% for book in book_list %}
+      {% for client in client_list %}
       <li>
         <a href="{{ client.get_absolute_url }}">{{ client.customerNumber }}</a>
         ({{client.memberType}})
