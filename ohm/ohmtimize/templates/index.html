@@ -6,9 +6,13 @@
     Welcome to Ohmtimize
   </p>
   <h2>Our success in numbers</h2>
-  <p>___</p>
+  <p>Join the Ohm community</p>
   <ul>
     <li><strong>Customers:</strong> {{ num_clients }}</li>
     <li><strong>Installations:</strong> {{ num_installations }}</li>
   </ul>
+
+{% load static %}
+<img src="{% static 'images/house_with_solar_panels.jpg' %}" alt="Image Ohmtimize" style="width:50%; margin-left: auto; margin-right: auto;" />
+
 {% endblock %}
