@@ -27,9 +27,11 @@ urlpatterns = [
 ]
 
 
-# Add URL maps to redirect the base URL to the app
 urlpatterns += [
+    # Add URL maps to redirect the base URL to the app
     path('', RedirectView.as_view(url='ohmtimize/', permanent=True)),
+    # Add django site authentication urls (for login, logout and password management)
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 # Use static() to add URL mapping to serve static files during development (only)

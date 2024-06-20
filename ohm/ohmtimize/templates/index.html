@@ -12,6 +12,8 @@
     <li><strong>Installations:</strong> {{ num_installations }}</li>
   </ul>
 
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+
 {% load static %}
 <img src="{% static 'images/house_with_solar_panels.jpg' %}" alt="Image Ohmtimize" style="width:50%; margin-left: auto; margin-right: auto;" />
 

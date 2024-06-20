@@ -11,9 +11,14 @@ def index(request):
     num_installations = Installation.objects.all().count()
     num_clients = Client.objects.all().count()
 
+    # Number of visits to this view, as counted in the session variable
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
         'num_installations': num_installations,
         'num_clients': num_clients,
+        'num_visits': num_visits,
     }
 
     #return HttpResponse("Hello, world. You're at the ohmitimize app index.")
@@ -38,3 +43,4 @@ class InstallationListView(generic.ListView):
 
 class InstallationDetailView(generic.DetailView):
     model = Installation
+
