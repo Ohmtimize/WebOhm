@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from datetime import date
 from django.urls import reverse # Used in get_absolute_url() to get URL for specified ID
 
 from django.db.models import UniqueConstraint # Constrains fields to unique values
@@ -116,13 +118,16 @@ class Consumption(models.Model):
     """Model representing a customer's consumption."""
     consumption = models.FloatField(help_text='Enter consumption')
     dateTime = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
 
 class Production(models.Model):
     """Model representing a customer's production."""
     production = models.FloatField(help_text='Enter production')
     dateTime = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
 
 class GridExchange(models.Model):
     """Model representing a customer's grid exchange."""
     gridExchange = models.FloatField(help_text='Enter grid exchange value')
     dateTime = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)

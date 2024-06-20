@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import *
 
@@ -44,3 +45,9 @@ class InstallationListView(generic.ListView):
 class InstallationDetailView(generic.DetailView):
     model = Installation
 
+class ConsumptionByUserListView(LoginRequiredMixin, generic.ListView):
+    model = Consumption
+    template_name = 'ohmtimize/consumption_by_user.html'
+
+    def get_queryset(self):
+        return Consumption.objects.filter(user=self.request.user)
