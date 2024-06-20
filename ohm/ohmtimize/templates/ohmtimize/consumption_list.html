@@ -16,4 +16,32 @@
     {% else %}
       <p>Your current consumption is not available.</p>
     {% endif %}
+
+    <h2>Current production</h2>
+    {%if production_list %}
+    <ul>
+      {% for prod in production_list %}
+      <li>
+        <a href="{{ prod.get_absolute_url }}">{{ prod.production }} kW</a>, on ({{prod.dateTime}})
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Your current production is not available.</p>
+    {% endif %}
+
+    <h3>Grid exchange</h3>
+    {%if grid_exchange_list %}
+    <ul>
+      {% for gridex in grid_exchange_list %}
+      <li>
+        <a href="{{ gridex.get_absolute_url }}">{{ gridex.gridExchange }} kW</a>, on ({{gridex.dateTime}})
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>The grid exchange amount is not available.</p>
+    {% endif %}
+
 {% endblock %}
+

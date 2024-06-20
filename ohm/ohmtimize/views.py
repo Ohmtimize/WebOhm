@@ -51,3 +51,9 @@ class ConsumptionByUserListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return Consumption.objects.filter(user=self.request.user)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['production_list'] = Production.objects.filter(user=self.request.user)
+        context['grid_exchange_list'] = GridExchange.objects.filter(user=self.request.user)
+        return context
