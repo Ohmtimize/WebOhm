@@ -11,4 +11,15 @@
     padding: 0;
     margin: 0;
   }
-  
+
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+  width: fit-content;
+}
+
+.help-msg {
+  color: #888;
+  font-style: italic;
+  width: fit-content;
+}

@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>My devices</h1>
+
+    {% if device_list %}
+    <ul>
+      {% for devi in device_list %}
+      <li>
+        <a href="{{ devi.get_absolute_url }}">{{ devi.name }} </a>, added on 
+        ({{ devi.dateTime }})
+      </li>
+      <ul>
+        <li>Device current consumption: {{ devi.value }} {{ devi.units }}</li>
+        <li>Device status: <b>{{ devi.deviceStatus }}</b></li>
+      </ul>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no devices to show.</p>
+    {% endif %}
+
+    <br>
+
+    <h4>Add a device</h4>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Add Device</button>
+    </form>
+
+        {% if messages %}
+        <ul class="messages success-msg ">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

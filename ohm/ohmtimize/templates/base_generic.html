@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     {% block title %}
-      <title>Local Library</title>
     {% endblock %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,6 +26,7 @@
               {% if user.is_authenticated %}
               <li>User: {{ user.get_username }}</li>
               <li><a href="{% url 'myconsumption' %}">My consumption</a></li>
+              <li><a href="{% url 'mydevices' %}">My devices</a></li>
               <li>
                 <form id="logout-form" method="post" action="{% url 'logout' %}">
                   {% csrf_token %}

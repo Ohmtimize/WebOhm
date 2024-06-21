@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from datetime import date
+from django.utils import timezone
 from django.urls import reverse # Used in get_absolute_url() to get URL for specified ID
 
 from django.db.models import UniqueConstraint # Constrains fields to unique values
@@ -100,12 +100,16 @@ class Device(models.Model):
         ('UNKNOWN', 'UNKNOWN'),
     ]
 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=100, help_text='Enter device name <br><br>')
+    value = models.FloatField(help_text='Enter device value <br><br>', default=0)
+    units = models.CharField(max_length=10, help_text='Enter device units <br><br>')
+    dateTime = models.DateTimeField(auto_now_add=timezone.now)
+    deviceStatus = models.CharField(max_length=7, choices=DEVICE_STATUS, default='UNKNOWN', help_text='Enter device status <br><br>')
 
-    name = models.CharField(max_length=100, help_text='Enter device name')
-    value = models.FloatField(help_text='Enter device value')
-    units = models.CharField(max_length=10, help_text='Enter device units')
-    dateTime = models.DateTimeField(auto_now_add=True)
-    deviceStatus = models.CharField(max_length=7, choices=DEVICE_STATUS, default='UNKNOWN', help_text='Enter device status')
+    def __str__(self):
+        """String for representing the Device object."""
+        return self.name
 
 class GDPR(models.Model):
     """Model representing the customer data (GDPR)."""

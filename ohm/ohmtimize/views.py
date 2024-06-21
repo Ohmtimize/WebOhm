@@ -1,9 +1,17 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+import datetime
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.views import generic
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 from .models import *
+from .forms import AddDeviceForm
+
 
 def index(request):
     '''View function for home page of site.'''
@@ -57,3 +65,31 @@ class ConsumptionByUserListView(LoginRequiredMixin, generic.ListView):
         context['production_list'] = Production.objects.filter(user=self.request.user)
         context['grid_exchange_list'] = GridExchange.objects.filter(user=self.request.user)
         return context
+    
+class DevicesByUserListView(LoginRequiredMixin, generic.ListView):
+    model = Device
+    template_name = 'ohmtimize/device_list.html'
+
+    def get_queryset(self):
+        return Device.objects.filter(user=self.request.user)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #context['device_list'] = Device.objects.filter(user=self.request.user)
+        if self.request.method == 'POST':
+            context['form'] = AddDeviceForm(self.request.POST)
+        else:
+            context['form'] = AddDeviceForm()
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        form = AddDeviceForm(request.POST)
+        if form.is_valid():
+            new_device = form.save(commit=False)
+            new_device.user = request.user
+            new_device.save()
+            messages.success(request, 'Device added successfully!', extra_tags='success')
+            return redirect('mydevices') 
+        return self.get(request, *args, **kwargs)
+
+
