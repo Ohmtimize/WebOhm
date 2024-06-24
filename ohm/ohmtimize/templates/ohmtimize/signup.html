@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Create an Account{% endblock %}
+
+{% block content %}
+    <h2>Sign up</h2>
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Create an account</button>
+    </form>
+{% endblock %} 

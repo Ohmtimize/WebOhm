@@ -9,5 +9,5 @@ urlpatterns = [
     path('installations/<int:pk>/', views.InstallationDetailView.as_view(), name='installation-detail'),
     path('myconsumption/', views.ConsumptionByUserListView.as_view(), name='myconsumption'),
     path('mydevices/', views.DevicesByUserListView.as_view(), name='mydevices'),
-    #path('mydevices/<int:pk>/', views.DeviceDetailView.as_view(), name='device-detail'),
+    path('register/', views.signup, name='signup'),
 ]

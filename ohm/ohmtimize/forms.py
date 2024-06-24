@@ -1,5 +1,6 @@
 from django import forms
-from .models import Device
+from .models import Device, GDPR
+from django.contrib.auth.forms import UserCreationForm
 
 class AddDeviceForm(forms.ModelForm):
     class Meta:
@@ -15,3 +16,16 @@ class AddDeviceForm(forms.ModelForm):
         if Device.objects.filter(device_name=device_name).exists():
             raise forms.ValidationError("Device with this name already exists.")
         return device_name
+    
+
+class RegisterUserForm(UserCreationForm):
+
+    class Meta:
+        model = GDPR
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+
+        # Remove default help text
+        def __init__(self, *args, **kwargs):
+            super(RegisterUserForm, self).__init__(*args, **kwargs)
+            for fieldname in ['username', 'password1', 'password2']:
+                self.fields[fieldname].help_text = None  # Remove default help text

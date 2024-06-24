@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse # Used in get_absolute_url() to get URL for specified ID
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 from django.db.models import UniqueConstraint # Constrains fields to unique values
 from django.db.models.functions import Lower # Returns lower cased value of field
@@ -111,11 +112,17 @@ class Device(models.Model):
         """String for representing the Device object."""
         return self.name
 
-class GDPR(models.Model):
+
+class GDPR(AbstractUser):
     """Model representing the customer data (GDPR)."""
     first_name = models.CharField(max_length=100, help_text='Enter first name')
     last_name = models.CharField(max_length=100, help_text='Enter last name')
-    #phone_number = PhoneNumberField(blank=True, help_text='Enter phone number')
+    username = models.CharField(max_length=10, default='username')
+    password = models.CharField(max_length=15, help_text='Enter password', default='default_password')  # Temporary default value
+    email = models.EmailField(default='default@example.com')  # Temporary default value
+
+    groups = models.ManyToManyField(Group, related_name='gdpr_user_set', blank=True)
+    user_permissions = models.ManyToManyField(Permission, related_name='gdpr_user_permissions_set', blank=True)
 
 
 class Consumption(models.Model):

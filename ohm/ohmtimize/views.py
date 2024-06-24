@@ -5,12 +5,13 @@ from django.http import HttpResponseRedirect
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.shortcuts import render, redirect
+#from django.urls import reverse
 
 from .models import *
-from .forms import AddDeviceForm
+from .forms import AddDeviceForm, RegisterUserForm
 
 
 def index(request):
@@ -32,6 +33,18 @@ def index(request):
 
     #return HttpResponse("Hello, world. You're at the ohmitimize app index.")
     return render(request, 'index.html', context)
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = RegisterUserForm()
+    return render(request, 'ohmtimize/signup.html', {'form': form})
 
 class ClientsListView(generic.ListView):
     model = Client
@@ -91,5 +104,3 @@ class DevicesByUserListView(LoginRequiredMixin, generic.ListView):
             messages.success(request, 'Device added successfully!', extra_tags='success')
             return redirect('mydevices') 
         return self.get(request, *args, **kwargs)
-
-
