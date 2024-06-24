@@ -41,7 +41,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('login')
     else:
         form = RegisterUserForm()
     return render(request, 'ohmtimize/signup.html', {'form': form})
