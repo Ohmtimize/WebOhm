@@ -20,8 +20,8 @@
           {% block sidebar %}
             <ul class="sidebar-nav">
               <li><a href="{% url 'index' %}">Home</a></li>
-              <li><a href="{% url 'clients' %}">All clients</a></li>
-              <li><a href="{% url 'installations' %}">All installations</a></li>
+              <li><a href="{% url 'clients' %}">All clients (only admin)</a></li>
+              <li><a href="{% url 'installations' %}">All installations (only admin)</a></li>
               <br>
               {% if user.is_authenticated %}
               <li>User: {{ user.get_username }}</li>

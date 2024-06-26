@@ -39,7 +39,10 @@ def signup(request):
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.is_staff = False # By default, do not give admin rights
+            user.is_superuser = False
+            user.save()
             login(request, user)
             return redirect('login')
     else:
@@ -54,8 +57,19 @@ class ClientsListView(generic.ListView):
     #queryset = Client.objects.filter(memberType='ST')[:5] # Get 5 clients with standard membership
     queryset = Client.objects.all()
 
+    # restrict access to the list view to admin users
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
+
 class ClientDetailView(generic.DetailView):
     model = Client
+    # restrict access to the list view to admin users
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
 
 class InstallationListView(generic.ListView):
     model = Installation
@@ -63,8 +77,19 @@ class InstallationListView(generic.ListView):
     context_object_name = 'installation_list'
     queryset = Installation.objects.all()
 
+    # restrict access to the list view to admin users
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
+
 class InstallationDetailView(generic.DetailView):
     model = Installation
+        # restrict access to the list view to admin users
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
 
 class ConsumptionByUserListView(LoginRequiredMixin, generic.ListView):
     model = Consumption
