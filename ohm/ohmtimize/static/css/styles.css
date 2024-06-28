@@ -1,9 +1,25 @@
+body {
+  font-family: 'Gotham', sans-serif;
+  margin: 2% 4%;
+}
+
+
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
     list-style: none;
   }
   
+.sidebar-nav li {
+  font-weight: bold;
+}
+
+.sidebar-nav a {
+  text-decoration: none;
+  color: #fb8500;
+  font-weight: 500;
+}
+
   #logout-form {
     display: inline;
   }
@@ -11,6 +27,28 @@
     padding: 0;
     margin: 0;
   }
+
+.hero div {
+  background-image: linear-gradient(180deg, rgb(14, 14, 37) 0.5%, rgba(156,203,209,0.12) 100%),  url("../images/house_with_solar_panels.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 50vh;
+}
+
+.hero h1, .hero p {
+  color:#9ccbd1;
+  text-align: center;
+}
+
+.hero h1 {
+  padding-top: 3%;
+}
+
+.stats {
+  margin: 2% 0;
+  padding: 2% 0;
+}
 
 .success-msg {
   color: #270;
@@ -23,3 +61,4 @@
   font-style: italic;
   width: fit-content;
 }
+

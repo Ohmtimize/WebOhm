@@ -1,20 +1,26 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Ohmtimize</h1>
-  <p>
-    Welcome to Ohmtimize
-  </p>
+<!-- Hero -->
+ <section class="hero">
+  <div>
+    <h1>Ohmtimize</h1>
+    <p>Welcome to Ohmtimize</p>
+  </div>
+ </section>
+
+ <section class="stats">
   <h2>Our success in numbers</h2>
   <p>Join the Ohm community</p>
   <ul>
     <li><strong>Customers:</strong> {{ num_clients }}</li>
     <li><strong>Installations:</strong> {{ num_installations }}</li>
   </ul>
+ </section>
 
-  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+  <span>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</span>
 
-{% load static %}
-<img src="{% static 'images/house_with_solar_panels.jpg' %}" alt="Image Ohmtimize" style="width:50%; margin-left: auto; margin-right: auto;" />
+<!-- {% load static %}
+<img src="{% static 'images/house_with_solar_panels.jpg' %}" alt="Image Ohmtimize" style="width:50%; margin-left: auto; margin-right: auto;" /> -->
 
 {% endblock %}
