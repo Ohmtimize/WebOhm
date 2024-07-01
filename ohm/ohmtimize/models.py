@@ -112,22 +112,6 @@ class Device(models.Model):
         """String for representing the Device object."""
         return self.name
 
-class GDPR(AbstractUser):
-    """Model representing the customer data (GDPR)."""
-    first_name = models.CharField(max_length=100, help_text='Enter first name')
-    last_name = models.CharField(max_length=100, help_text='Enter last name')
-    username = models.CharField(max_length=10, default='username')
-    password = models.CharField(max_length=15, help_text='Enter password', default='default_password')
-    email = models.EmailField(default='default@example.com')
-
-    groups = models.ManyToManyField(Group, related_name='gdpr_user_set', blank=True)
-    user_permissions = models.ManyToManyField(Permission, related_name='gdpr_user_permissions_set', blank=True)
-
-    #objects = GDPRUserManager()
-
-    def __str__(self):
-        return self.username
-
 
 class Consumption(models.Model):
     """Model representing a customer's consumption."""

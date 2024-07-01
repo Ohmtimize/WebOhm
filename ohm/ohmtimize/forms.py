@@ -1,5 +1,6 @@
 from django import forms
-from .models import Device, GDPR
+from .models import Device
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class AddDeviceForm(forms.ModelForm):
@@ -19,10 +20,11 @@ class AddDeviceForm(forms.ModelForm):
     
 
 class RegisterUserForm(UserCreationForm):
+    email = forms.EmailField(required=True)
 
     class Meta:
-        model = GDPR
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
 
         # Remove default help text
         def __init__(self, *args, **kwargs):

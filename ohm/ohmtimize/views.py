@@ -39,7 +39,8 @@ def signup(request):
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
+            user = form.save(commit=False) # Don't save the user yet
+            user.email = form.cleaned_data['email']
             user.is_staff = False # By default, do not give admin rights
             user.is_superuser = False
             user.save()
