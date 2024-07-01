@@ -112,22 +112,6 @@ class Device(models.Model):
         """String for representing the Device object."""
         return self.name
 
-class GDPRUserManager(BaseUserManager):
-    def create_user(self, username, email, password=None, **extra_fields):
-        if not email:
-            raise ValueError('The Email field must be set')
-        email = self.normalize_email(email)
-        user = self.model(username=username, email=email, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, username, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-
-        return self.create_user(username, email, password, **extra_fields)
-
 class GDPR(AbstractUser):
     """Model representing the customer data (GDPR)."""
     first_name = models.CharField(max_length=100, help_text='Enter first name')
@@ -139,7 +123,7 @@ class GDPR(AbstractUser):
     groups = models.ManyToManyField(Group, related_name='gdpr_user_set', blank=True)
     user_permissions = models.ManyToManyField(Permission, related_name='gdpr_user_permissions_set', blank=True)
 
-    objects = GDPRUserManager()
+    #objects = GDPRUserManager()
 
     def __str__(self):
         return self.username
