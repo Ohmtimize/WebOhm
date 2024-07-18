@@ -30,4 +30,4 @@ class RegisterUserForm(UserCreationForm):
         def __init__(self, *args, **kwargs):
             super(RegisterUserForm, self).__init__(*args, **kwargs)
             for fieldname in ['username', 'password1', 'password2']:
-                self.fields[fieldname].help_text = None  # Remove default help text
+                self.fields[fieldname].help_text = None 
