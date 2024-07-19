@@ -2,25 +2,42 @@
 
 {% block content %}
 <!-- Hero -->
- <section class="container hero">
-  <div>
-    <h1 class="mt-5">Ohmtimize</h1>
-    <p>Welcome to Ohmtimize</p>
+<section class="container hero text-center">
+    <div class="jumbotron text-brand-secondary">
+        <h1 class="display-5 fw-medium">Exploitez au maximum vos panneaux solaires</h1>
+        <h2 class="lead">Ohmtimize ajuste automatiquement la consommation électrique de votre maison pour maximiser l’utilisation de votre propre production.  Tout cela pour une fraction du coût d’une batterie.</h2>
+    </div>
+</section>
+
+<section class="container stats my-5">
+  <h3 class="text-center mb-4 text-brand-secondary fs-1">Nos chiffres</h3>
+  <p class="text-center fs-5 mb-4">Rejoint la communauté Ohmtimize et commence aujourd'hui à faire des économies.</p>
+  <div class="row justify-content-center">
+      <div class="col-md-3 text-center">
+          <div class="card bg-brand-dark text-brand-light">
+              <div class="card-body">
+                  <strong>Clients:</strong> {{ num_clients }}
+                  <div class="mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                      <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                    </svg>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3 text-center">
+          <div class="card bg-brand-dark text-brand-light">
+              <div class="card-body">
+                  <strong>Installations:</strong> {{ num_installations }}
+                  <div class="mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                      <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+                    </svg>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
- </section>
-
- <section class="stats">
-  <h2>Our success in numbers</h2>
-  <p>Join the Ohm community</p>
-  <ul>
-    <li><strong>Customers:</strong> {{ num_clients }}</li>
-    <li><strong>Installations:</strong> {{ num_installations }}</li>
-  </ul>
- </section>
-
-  <span>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</span>
-
-<!-- {% load static %}
-<img src="{% static 'images/house_with_solar_panels.jpg' %}" alt="Image Ohmtimize" style="width:50%; margin-left: auto; margin-right: auto;" /> -->
+</section>
 
 {% endblock %}
