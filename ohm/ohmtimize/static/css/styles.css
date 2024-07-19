@@ -38,12 +38,17 @@ body {
   background-color: #087e8b;
 }
 
-.text-brand-secondary {
-  color: #fb8500
+.bg-brand-secondary {
+  background-color: #fb8500;
 }
 
-.text-brand-light {
-  color: #ffffff;
+
+.text-brand-primary {
+  color: #087e8b
+}
+
+.text-brand-secondary {
+  color: #fb8500
 }
 
 .bg-brand-dark {
@@ -80,6 +85,22 @@ body {
 .stats {
   margin: 2% 0;
   padding: 2% 0;
+}
+
+
+.custom-btn {
+  background-color: #fb8500;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-btn:hover {
+  color: #ffffff;
+  background-color: #e07b00;
 }
 
 .success-msg {
