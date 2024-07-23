@@ -11,7 +11,8 @@ from django.shortcuts import render, redirect
 #from django.urls import reverse
 
 from .models import *
-from .forms import AddDeviceForm, RegisterUserForm
+from django.contrib.auth.views import LoginView
+from .forms import AddDeviceForm, RegisterUserForm, CustomLoginForm
 
 
 def index(request):
@@ -34,6 +35,17 @@ def index(request):
     #return HttpResponse("Hello, world. You're at the ohmitimize app index.")
     return render(request, 'index.html', context)
 
+
+def customLogin(request):
+    if request.method == 'POST':
+        form = CustomLoginForm(request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = CustomLoginForm()
+    return render(request, 'ohmtimize/login.html', {'form': form})
 
 def signup(request):
     if request.method == 'POST':

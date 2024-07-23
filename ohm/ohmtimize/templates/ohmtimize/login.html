@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h2 class="text-brand-secondary">Créer un compte</h2>
+    <h2 class="text-brand-secondary">Se Connecter</h2>
     <form method="POST" class="form-group my-5">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn custom-outline-btn text-brand-secondary">S'enregistrer</button>
+        <button type="submit" class="btn custom-outline-btn text-brand-secondary">Se connecter</button>
     </form>
 {% endblock %} 
