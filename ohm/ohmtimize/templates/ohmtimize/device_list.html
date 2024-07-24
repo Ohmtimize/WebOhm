@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>My devices</h1>
+    <h1 class="text-brand-secondary fs-1">Mes dispositifs</h1>
 
     {% if device_list %}
     <ul>
@@ -11,23 +11,23 @@
         ({{ devi.dateTime }})
       </li>
       <ul>
-        <li>Device current consumption: {{ devi.value }} {{ devi.units }}</li>
-        <li>Device status: <b>{{ devi.deviceStatus }}</b></li>
+        <li>Consommation actuelle du dispositif: {{ devi.value }} {{ devi.units }}</li>
+        <li>Status du dispositif: <b>{{ devi.deviceStatus }}</b></li>
       </ul>
       {% endfor %}
     </ul>
     {% else %}
-      <p>There are no devices to show.</p>
+      <p>Il n'y a pas de dispositifs à montrer.</p>
     {% endif %}
 
     <br>
 
-    <h4>Add a device</h4>
+    <h4 class="text-brand-secondary fs-3">Ajouter un dispositif</h4>
 
-    <form method="post">
+    <form method="post" action="">
         {% csrf_token %}
-        {{ form.as_table }}
-        <button type="submit">Add Device</button>
+        {{ form.as_p }}
+        <button type="submit" class="btn custom-btn fw-medium p-2">Ajouter</button>
     </form>
 
         {% if messages %}

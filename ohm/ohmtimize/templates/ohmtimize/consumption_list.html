@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Current consumption</h1>
+    <h1 class="text-brand-secondary fs-2">Consommation actuelle</h1>
 
     {% if consumption_list %}
     <ul>
@@ -17,7 +17,7 @@
       <p>Your current consumption is not available.</p>
     {% endif %}
 
-    <h2>Current production</h2>
+    <h2 class="text-brand-secondary fs-2">Production actuelle</h2>
     {%if production_list %}
     <ul>
       {% for prod in production_list %}
@@ -30,7 +30,7 @@
     <p>Your current production is not available.</p>
     {% endif %}
 
-    <h3>Grid exchange</h3>
+    <h3 class="text-brand-secondary fs-2">Échangée avec le réseau</h3>
     {%if grid_exchange_list %}
     <ul>
       {% for gridex in grid_exchange_list %}

@@ -20,9 +20,22 @@ body {
   font-weight: 500;
 }
 
-.nav-item a {
+.nav-item a, .nav-btn, #adminDropdown {
   color:#087e8b;
   font-size: large;
+  text-decoration: none;
+}
+
+.nav-item span, .nav-item span:hover {
+  color: #fb8500;
+  font-weight: bolder;
+  font-size: large;
+  margin-right: 5em;
+}
+
+.nav-item a:hover, .nav-btn:hover {
+  color: #065861;
+  font-weight: bold;
 }
 
   #logout-form {

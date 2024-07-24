@@ -1,9 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Customer: {{ client.customerNumber }}</h1>
+  <h1 class="text-brand-secondary fs-2">Customer: {{ client.customerNumber }}</h1>
 
-  <p><strong>Customer Number:</strong> <a href="">{{ client.customerNumber }}</a></p>
-  <p><strong>Member type:</strong> {{ client.memberType }}</p>
+  <p><strong>Numéro de client:</strong> <a href="">{{ client.customerNumber }}</a></p>
+  <p><strong>Type de membre:</strong> {{ client.memberType }}</p>
 
 {% endblock %}

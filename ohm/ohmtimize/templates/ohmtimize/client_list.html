@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>List of Customers</h1>
+  <h1 class="text-brand-secondary fs-2">Liste de clients</h1>
   {% if client_list %}
     <ul>
       {% for client in client_list %}
@@ -12,6 +12,6 @@
       {% endfor %}
     </ul>
   {% else %}
-    <p>There are no clients in the database.</p>
+    <p>Aucun client n'est enregistré dans la base de données.</p>
   {% endif %}
 {% endblock %}

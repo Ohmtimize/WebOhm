@@ -8,15 +8,26 @@ class AddDeviceForm(forms.ModelForm):
     class Meta:
         model = Device
         fields = ['name', 'value', 'units', 'deviceStatus']
+        labels = {
+            'name': 'Nom',
+            'value': 'Valeur',
+            'units': 'Unités',
+            'deviceStatus': 'Statut du dispositif',
+        }
         widgets = {
             'deviceStatus': forms.Select(attrs={'class': 'help-msg'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(AddDeviceForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.help_text=None
 
     # Check if device name already exists
     def clean_device_name(self):
         device_name = self.cleaned_data['name']
         if Device.objects.filter(device_name=device_name).exists():
-            raise forms.ValidationError("Device with this name already exists.")
+            raise forms.ValidationError("Ce nom de dispositif est déjà utilisé.")
         return device_name
     
 
