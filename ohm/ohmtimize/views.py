@@ -38,7 +38,7 @@ def index(request):
 
 def customLogin(request):
     if request.method == 'POST':
-        form = CustomLoginForm(request.POST)
+        form = CustomLoginForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
