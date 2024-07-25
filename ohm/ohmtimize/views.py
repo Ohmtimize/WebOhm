@@ -64,12 +64,13 @@ def signup(request):
 
 class ClientsListView(generic.ListView):
     model = Client
+    template_name = 'ohmtimize/client_list.html'
     paginate_by = 2
     # filter a subset of results to show:
     context_object_name = 'client_list'
     #queryset = Client.objects.filter(memberType='ST')[:5] # Get 5 clients with standard membership
     queryset = Client.objects.all()
-
+    
     # restrict access to the list view to admin users
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_staff:

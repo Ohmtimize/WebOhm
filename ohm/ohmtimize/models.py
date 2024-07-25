@@ -56,7 +56,18 @@ class Client(models.Model):
         help_text='Enter customer number'
     )
 
-    memberType = models.CharField(max_length=2, choices=MEMBER_TYPES, default=STARTER, help_text='Enter member type')
+    memberType = models.CharField(
+        max_length=2, 
+        choices=MEMBER_TYPES, 
+        default=STARTER, 
+        help_text='Enter member type')
+    
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         """String for representing the Client object."""

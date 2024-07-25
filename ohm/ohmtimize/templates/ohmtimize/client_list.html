@@ -2,16 +2,25 @@
 
 {% block content %}
   <h1 class="text-brand-secondary fs-2">Liste de clients</h1>
+  <br>
   {% if client_list %}
-    <ul>
-      {% for client in client_list %}
-      <li>
-        <a href="{{ client.get_absolute_url }}">{{ client.customerNumber }}</a>
-        ({{client.memberType}})
-      </li>
-      {% endfor %}
-    </ul>
+    <table class="client-table">
+      <thead>
+        <tr>
+          <th>Numéro client</th>
+          <th>Type de client</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for client in client_list %}
+          <tr>
+            <td><a href="{{ client.get_absolute_url }}" class="client-link">{{ client.customerNumber }}</a></td>
+            <td>{{ client.memberType }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   {% else %}
-    <p>Aucun client n'est enregistré dans la base de données.</p>
+    <p class="no-clients">Aucun client n'est enregistré dans la base de données.</p>
   {% endif %}
 {% endblock %}

@@ -1,75 +1,160 @@
+:root {
+  --brand-primary: #087e8b;
+  --brand-secondary: #fb8500;
+  --text-color: #071e22;
+  --background-color: #fff;
+  --brand-primary-shade: #065861;
+  --brand-secondary-shade: #e07b00;
+  --table-border-color: #ddd;
+}
+
+
+/* Body */
 body {
   font-family: 'Gotham', sans-serif;
   margin: 2% 4%;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-
-.sidebar-nav {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
-  }
-  
-.sidebar-nav li {
-  font-weight: bold;
-}
-
-.sidebar-nav a {
-  text-decoration: none;
-  color: #fb8500;
-  font-weight: 500;
-}
-
-.nav-item a, .nav-btn, #adminDropdown {
-  color:#087e8b;
-  font-size: large;
-  text-decoration: none;
-}
-
-.nav-item span, .nav-item span:hover {
-  color: #fb8500;
-  font-weight: bolder;
-  font-size: large;
-  margin-right: 5em;
-}
-
-.nav-item a:hover, .nav-btn:hover {
-  color: #065861;
-  font-weight: bold;
-}
-
-  #logout-form {
-    display: inline;
-  }
-  #logout-form button {
-    padding: 0;
-    margin: 0;
-  }
-
-
+/* Brand Colors */
 .bg-brand-primary {
-  background-color: #087e8b;
+  background-color: var(--brand-primary)
 }
 
 .bg-brand-secondary {
-  background-color: #fb8500;
+  background-color: var(--brand-secondary)
 }
 
 
 .text-brand-primary {
-  color: #087e8b
+  color: var(--brand-primary) 
 }
 
 .text-brand-secondary {
-  color: #fb8500
+  color: var(--brand-secondary)
 }
 
 .bg-brand-dark {
-  background-color: #071e22;
+  background-color: var(--text-color)
 }
 
+
+
+/* Buttons */
+.custom-btn {
+  background-color: var(--brand-secondary);
+  color: var(--background-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-btn:hover {
+  color: var(--background-color);
+  background-color: var(--brand-secondary-shade);
+  font-weight: bold;
+}
+
+.custom-outline-btn {
+  color: var(--brand-secondary);
+  font-weight: bolder;
+  background-color: var(--background-color);
+  border: 3px solid var(--brand-secondary);
+}
+
+.custom-outline-btn:hover {
+  color: #e07b00;
+  border: 4px solid var(--brand-secondary-shade);
+  font-weight: extrabold;
+}
+
+
+/* Messages */
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+  width: fit-content;
+}
+
+.help-msg {
+  color: #888;
+  font-style: italic;
+  width: fit-content;
+}
+
+
+/* Tables */
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.client-table th,
+.client-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--brand-secondary);
+}
+
+.client-table th {
+  background-color: #cadfe2;
+  color: var(--brand-primary-shade)
+}
+
+
+/* Nav bar */
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+font-weight: bold;
+}
+
+.sidebar-nav a {
+text-decoration: none;
+color: var(--brand-secondary);
+font-weight: 500;
+}
+
+.nav-item a, .nav-btn, #adminDropdown {
+color:var(--brand-primary);
+font-size: large;
+text-decoration: none;
+}
+
+.nav-item span, .nav-item span:hover {
+color: var(--brand-secondary);
+font-weight: bolder;
+font-size: large;
+margin-right: 5em;
+}
+
+.nav-item a:hover, .nav-btn:hover {
+color: var(--brand-primary-shade);
+font-weight: bold;
+}
+
+
+/* Forms */
+#logout-form {
+  display: inline;
+}
+
+#logout-form button {
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Other */
 .logo {
-  color: #087e8b;
+  color: var(--brand-primary);
   font-weight: bold;
   font-size: larger;
   margin-left: 4px;
@@ -100,44 +185,19 @@ body {
   padding: 2% 0;
 }
 
-.custom-btn {
-  background-color: #fb8500;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
+.client-link {
+  color: var(--text-color);
+  text-decoration: none;
 }
 
-.custom-btn:hover {
-  color: #ffffff;
-  background-color: #e07b00;
-  font-weight: bold;
+.client-link:hover {
+  color: var(--brand-secondary);
+  font-weight: medium;
 }
 
-.custom-outline-btn {
-  color: #fb8500;
-  font-weight: bolder;
-  background-color: #ffffff;
-  border: 3px solid #fb8500;
+.no-clients {
+  color: #999;
 }
 
-.custom-outline-btn:hover {
-  color: #e07b00;
-  border: 4px solid #e07b00;
-  font-weight: extrabold;
-}
 
-.success-msg {
-  color: #270;
-  background-color: #DFF2BF;
-  width: fit-content;
-}
-
-.help-msg {
-  color: #888;
-  font-style: italic;
-  width: fit-content;
-}
 
