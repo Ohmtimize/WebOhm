@@ -26,7 +26,6 @@ body {
   background-color: var(--brand-secondary)
 }
 
-
 .text-brand-primary {
   color: var(--brand-primary) 
 }
@@ -38,7 +37,6 @@ body {
 .bg-brand-dark {
   background-color: var(--text-color)
 }
-
 
 
 /* Buttons */
@@ -200,4 +198,59 @@ font-weight: bold;
 }
 
 
+/* Chart */
+.chartContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  padding: 16px;
+}
 
+.bar-chart {
+  display: flex;
+  gap: 5px; /* Space between bars */
+}
+
+.bar {
+  width: 25px; /* Width of each bar */
+  background-color: lightblue;
+  margin-right: 10px;
+  align-self: flex-end;
+}
+
+.bar:first-child {
+  margin-left: 20px;
+}
+
+.bar:last-child {
+  margin-right: 0;
+}
+
+.x-axis {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  border-top: 1px dashed gray;
+  margin-left: 10px;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 15px;
+}
+
+.x-label {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.y-label {
+  position: relative;
+  left: 24px;
+  bottom: 150px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+}

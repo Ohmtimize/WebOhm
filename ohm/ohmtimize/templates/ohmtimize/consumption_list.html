@@ -1,47 +1,181 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1 class="text-brand-secondary fs-2">Consommation actuelle</h1>
+  <h1 class="text-brand-secondary fs-2">Overview</h1>
 
-    {% if consumption_list %}
+  <section>
+    <h2 class="fs-3 pt-3">Ma consommation d'énergie</h2>
+    <div class="row justify-content-center bg-light">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body text-center">
+            {% if consumption_list %}
+            <ul class="list-unstyled ">
+              {% for consum in consumption_list %}
+              <li>
+                <a href="{{ consum.get_absolute_url }}">{{ consum.consumption }} kWh</a>, on
+                ({{consum.dateTime}})
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+              <p>Your current consumption is not available.</p>
+            {% endif %}
+            <p class="text-brand-primary">Auto-consommation</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          {%if production_list %}
+          <div class="card-body text-center">
+            <ul class="list-unstyled ">
+              {% for prod in production_list %}
+              <li>
+                <a href="{{ prrod.get_absolute_url }}">{{ prod.production }} kWh</a>, on
+                ({{prod.dateTime}})
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+              <p>Your current production is not available.</p>
+            {% endif %}
+            <p class="text-brand-primary">Auto-production</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          {%if grid_exchange_list %}
+          <div class="card-body text-center">
+            <ul class="list-unstyled ">
+              {% for gridex in grid_exchange_list %}
+              <li>
+                <a href="{{ gridex.get_absolute_url }}">{{ gridex.gridExchange }} kW</a>, on ({{gridex.dateTime}})
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+              <p>The grid exchange amount is not available.</p>
+            {% endif %}
+            <p class="text-brand-primary">Échangée avec le réseau</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <h2 class="fs-3 pt-3">Mes économies </h2>
+    <div class="row bg-light">
+      <div class="col-3">
+        <div class="card ">
+          <div class="card-body text-center">
+            <p class="text-brand-primary">Estimation de votre prochaine facture d'énergie</p>
+            <span class="fs-1 text-brand-secondary">325,05 €</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="fs-1 text-success">325,05 €</span>
+            <p class="text-brand-primary">Épargnés</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center">
+            <span class="fs-1 text-success">3T CO2</span>
+            <p class="text-brand-primary">Épargnés</p>
+          </div>
+        </div>
+        </div>
+
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="fs-1 text-brand-secondary">120 €</span>
+            <p class="text-brand-primary">Potentiel d'optimisation</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="container d-flex flex-row  justify-content-between align-items-baseline mt-3">
+  <div class="bg-light">
+    <h2 class="fs-3 p-2">Ma consommation</h2>
+    <div class="chartContainer">
+      <div class="y-axis">
+        <span>1.5</span>
+        <span>1.0</span>
+        <span>0.5</span>
+        <span>0.0</span>
+      </div>
+      <div class="bar-chart">
+          <div class="bar" style="height: 250px;"></div>
+          <div class="bar" style="height: 180px;"></div>
+          <div class="bar" style="height: 80px;"></div>
+          <div class="bar" style="height: 90px;"></div>
+          <div class="bar" style="height: 120px;"></div>
+          <div class="bar" style="height: 50px;"></div>
+          <div class="bar" style="height: 130px;"></div>
+          <div class="bar" style="height: 70px;"></div>
+          <div class="bar" style="height: 90px;"></div>
+          <div class="bar" style="height: 10px;"></div>
+          <div class="bar" style="height: 30px;"></div>
+          <div class="bar" style="height: 130px;"></div>
+          <div class="bar" style="height: 75px;"></div>
+          <div class="bar" style="height: 40px;"></div>
+          <div class="bar" style="height: 200px;"></div>
+          <div class="bar" style="height: 30px;"></div>
+          <div class="bar" style="height: 230px;"></div>
+          <div class="bar" style="height: 170px;"></div>
+          <div class="bar" style="height: 90px;"></div>
+          <div class="bar" style="height: 20px;"></div>
+      </div>
+  </div>
+  <div class="x-axis">
+    <span>7h</span>
+    <span>8h</span>
+    <span>9h</span>
+    <span>10h</span>
+    <span>11h</span>
+    <span>12h</span>
+    <span>13h</span>
+    <span>14h</span>
+    <span>10h</span>
+    <span>11h</span>
+    <span>12h</span>
+    <span>13h</span>
+    <span>14h</span>
+    <span>15h</span>
+    <span>16h</span>
+    <span>17h</span>
+    <span>18h</span>
+    <span>19h</span>
+    <span>20h</span>
+    <span>21h</span>
+  </div>
+  <div class="x-label">Temps (h)</div>
+  <div class="y-label">Energie (kWh)</div>
+  </div>
+
+  <div class="bg-light ms-3">
+    <h3 class="text-brand-primary fs-4 border-bottom border-brand-primary p-2">Nos conseils</h3>
     <ul>
-
-      {% for consum in consumption_list %}
-      <li>
-        <a href="{{ consum.get_absolute_url }}">{{ consum.consumption }} kWh</a>, on
-        ({{consum.dateTime}})
-      </li>
-      {% endfor %}
+      <li class="mt-4 mb-3">Épargnez 5€/mois en changeant de fournisseur avant le 15 Décembre 2024.</li>
+      <li class="mb-3">Votre frigo d’appoint semble être le plus gourmand de vos électroménagers.</li>
     </ul>
-    {% else %}
-      <p>Your current consumption is not available.</p>
-    {% endif %}
+  </div>
+</section>
 
-    <h2 class="text-brand-secondary fs-2">Production actuelle</h2>
-    {%if production_list %}
-    <ul>
-      {% for prod in production_list %}
-      <li>
-        <a href="{{ prod.get_absolute_url }}">{{ prod.production }} kW</a>, on ({{prod.dateTime}})
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>Your current production is not available.</p>
-    {% endif %}
-
-    <h3 class="text-brand-secondary fs-2">Échangée avec le réseau</h3>
-    {%if grid_exchange_list %}
-    <ul>
-      {% for gridex in grid_exchange_list %}
-      <li>
-        <a href="{{ gridex.get_absolute_url }}">{{ gridex.gridExchange }} kW</a>, on ({{gridex.dateTime}})
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>The grid exchange amount is not available.</p>
-    {% endif %}
 
 {% endblock %}
 
