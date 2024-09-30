@@ -32,7 +32,7 @@ on:
   push:
 
   pull_request:
-  
+
   workflow_dispatch:
 
 permissions:
@@ -52,7 +52,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: List files for debugging
-        run: ls -R
+        run: ls -aR
       - name: Run tests
         run: |
           pip install coverage
