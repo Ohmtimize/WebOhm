@@ -1,0 +1,26 @@
+iniconfig==2.0.0
+packaging==24.0
+paho-mqtt==2.0.0
+pluggy==1.4.0
+pytest==8.1.1
+python-dotenv==1.0.1
+# Django and Core Libraries
+Django==4.2.4         # Specify the version you are using
+
+# Database Drivers
+psycopg2-binary==2.9.6  # For PostgreSQL
+# mysqlclient==2.1.1     # Uncomment for MySQL
+
+# Linting and Code Quality
+pylint==2.17.5          # For linting (used by SonarCloud)
+
+# Testing Tools
+pytest==7.3.1           # For running tests
+pytest-django==4.5.2    # Pytest plugin for Django
+pytest-cov==4.0.0       # For test coverage
+
+# Security Packages (optional but recommended)
+django-environ==0.10.0  # For managing environment variables
+django-extensions==3.2  # Useful development extensions
+
+# Other dependencies used by your project
