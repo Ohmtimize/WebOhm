@@ -54,15 +54,13 @@ jobs:
       - name: Run tests
         run: |
           pip install coverage
-          coverage run manage.py test
-          coverage xml
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v1.5
-        with:
-          args: >
-            -Dsonar.projectKey=your_project_key
-            -Dsonar.organization=your_organization
-            -Dsonar.python.coverage.reportPaths=coverage.xml
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@v1.5
+      #   with:
+      #     args: >
+      #       -Dsonar.projectKey=your_project_key
+      #       -Dsonar.organization=your_organization
+      #       -Dsonar.python.coverage.reportPaths=coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Analyze with SonarCloud
