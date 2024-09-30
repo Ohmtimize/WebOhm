@@ -22,5 +22,5 @@ pytest-cov==4.0.0       # For test coverage
 # Security Packages (optional but recommended)
 django-environ==0.10.0  # For managing environment variables
 django-extensions==3.2  # Useful development extensions
-
+coverage==7.3.1
 # Other dependencies used by your project
