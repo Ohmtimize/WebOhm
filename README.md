@@ -19,6 +19,11 @@ This is a web application of Ohmtimize.
 git clone https://github.com/Ohmtimize/WebOhm.git
 cd webohm
 pip install .\requirements.txt
+```
+
+### Run
+
+```bash
 cd src
 python manage.py migrate
 python manage.py runserver
