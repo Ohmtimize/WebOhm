@@ -3,7 +3,9 @@ packaging==24.0
 paho-mqtt==2.0.0
 pluggy==1.4.0
 phonenumbers == 8.13.47
+paho-mqtt == 2.1.0
 python-dotenv==1.0.1
+django-debug-toolbar == 4.4.6
 # Django and Core Libraries
 Django==4.2.4         # Specify the version you are using
 django-phonenumber-field == 8.0.0
