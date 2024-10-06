@@ -49,8 +49,7 @@ def start_mqtt() -> None:
     client.subscribe("home/#", qos=1)
 
     # a single publish, this can also be done in loops, etc.
-    client.publish("home/temperature", payload="hot", qos=1)
 
     # loop_forever for simplicity, here you need to stop the loop manually
     # you can also use loop_start and loop_stop
-    client.loop_start()
+    client.loop_forever()
