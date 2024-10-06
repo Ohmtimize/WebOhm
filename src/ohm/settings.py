@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -147,3 +148,16 @@ LOGIN_REDIRECT_URL = 'index'
 
 # Log any emails sent to the console, for testing purposes
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Initialize environment variables
+env = environ.Env()
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Read .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# Access the environment variables
+MQTT_BROKER = env('MQTT_BROKER')
+MQTT_CLIENT_ID = env('MQTT_CLIENT_ID')
+MQTT_PORT = env.int('MQTT_PORT', 8883)  # Default to 8883
+MQTT_USERNAME = env('MQTT_USERNAME')
+MQTT_PASSWORD = env('MQTT_PASSWORD')

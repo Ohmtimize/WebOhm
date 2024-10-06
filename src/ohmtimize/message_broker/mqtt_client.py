@@ -1,12 +1,9 @@
 import paho.mqtt.client as mqtt
 import ssl
+from ohm.settings import MQTT_BROKER, MQTT_CLIENT_ID, MQTT_PASSWORD, MQTT_USERNAME
 
 # Define your MQTT broker details
-MQTT_BROKER = '07f079abe9714c73baaf295c62f69fa8.s1.eu.hivemq.cloud'
-MQTT_PORT = 8883
 MQTT_KEEPALIVE = 60  # seconds
-MQTT_USERNAME: str = 'hivemq.pythonclient'    # Replace with your username
-MQTT_PASSWORD: str = 'xNQV(q=k:47L9p#2?C6HGf'      # Replace with your password
 
 # Define the topic you want to subscribe to
 TOPIC = 'home'
@@ -29,15 +26,15 @@ def on_subscribe(client, userdata, mid, granted_qos, properties=None):
 # Initialize the MQTT client
 def start_mqtt() -> None:
 
-    client = mqtt.Client(client_id="07f079abe9714c73baaf295c62f69fa8", userdata=None, protocol=mqtt.MQTTv5)
+    client = mqtt.Client(client_id=MQTT_CLIENT_ID, userdata=None, protocol=mqtt.MQTTv5)
     client.on_connect = on_connect
 
     # enable TLS for secure connection
     client.tls_set(tls_version=ssl.PROTOCOL_TLS)
     # set username and password
-    client.username_pw_set("hivemq.pythonclient", "xNQV(q=k:47L9p#2?C6HGf")
+    client.username_pw_set(MQTT_USERNAME, MQTT_PASSWORD)
     # connect to HiveMQ Cloud on port 8883 (default for MQTT)
-    client.connect("07f079abe9714c73baaf295c62f69fa8.s1.eu.hivemq.cloud", 8883)
+    client.connect(MQTT_BROKER, 8883)
 
     # setting callbacks, use separate functions like above for better visibility
     client.on_subscribe = on_subscribe

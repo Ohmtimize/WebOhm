@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import MagicMock, patch
 import paho.mqtt.client as mqtt
 from ohmtimize.message_broker import mqtt_client
+from ohm.settings import MQTT_BROKER, MQTT_CLIENT_ID, MQTT_PASSWORD, MQTT_USERNAME
 
 
 class TestMQTTClient(unittest.TestCase):
@@ -17,10 +18,10 @@ class TestMQTTClient(unittest.TestCase):
         mqtt_client.start_mqtt()
 
         # Assert
-        mock_mqtt_client.assert_called_once_with(client_id="07f079abe9714c73baaf295c62f69fa8", userdata=None, protocol=mqtt.MQTTv5)
+        mock_mqtt_client.assert_called_once_with(client_id=MQTT_CLIENT_ID, userdata=None, protocol=mqtt.MQTTv5)
         mock_client_instance.tls_set.assert_called_once()
-        mock_client_instance.username_pw_set.assert_called_once_with("hivemq.pythonclient", "xNQV(q=k:47L9p#2?C6HGf")
-        mock_client_instance.connect.assert_called_once_with("07f079abe9714c73baaf295c62f69fa8.s1.eu.hivemq.cloud", 8883)
+        mock_client_instance.username_pw_set.assert_called_once_with(MQTT_USERNAME, MQTT_PASSWORD)
+        mock_client_instance.connect.assert_called_once_with(MQTT_BROKER, 8883)
         mock_client_instance.loop_forever.assert_called_once()
 
     def test_on_connect(self):
