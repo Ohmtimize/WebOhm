@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gdpr',
             name='password',
-            field=models.CharField(default='default_password', help_text='Enter password', max_length=15),
+            field=models.CharField(help_text='Enter password', max_length=15),
         ),
         migrations.AddField(
             model_name='gdpr',

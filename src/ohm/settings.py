@@ -16,6 +16,10 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Read .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -96,8 +100,12 @@ WSGI_APPLICATION = 'ohm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME'),       # Replace with your MySQL database name
+        'USER': env('DB_USER'),            # Replace with your MySQL username
+        'PASSWORD': env('DB_PASSWORD'),        # Replace with your MySQL password
+        'HOST': env('DB_HOST'),                # Or the IP address of your MySQL host
+        'PORT': env('DB_PORT'),                     # MySQL default port is 3306
     }
 }
 
@@ -150,10 +158,6 @@ LOGIN_REDIRECT_URL = 'index'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Initialize environment variables
-env = environ.Env()
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Read .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Access the environment variables
 MQTT_BROKER = env('MQTT_BROKER')
